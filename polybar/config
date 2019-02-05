@@ -1,0 +1,219 @@
+;-------------------------------------------------
+;                                                ;
+;           Polybar config for my themes         ;
+; 				                 ;
+;                                                ;
+;-------------------------------------------------
+
+
+[colors]
+;My colors are set from .Xresources to match everything else
+my_background 	= #405540
+my_foreground 	= #bfbfbf
+my_color0	= #0f1619
+my_color1	= #393843
+my_color2	= #75404b
+my_color3	= #39402e
+my_color4	= #56694d
+my_color5	= #4c584a
+my_color6	= #662b37
+my_color7	= #bfbfbf
+my_color8	= #5d6160
+my_color9	= #662b37
+my_color10	= #39402e
+my_color11	= #393843
+my_color12	= #75404b
+my_color13	= #662b37
+my_color14	= #4c584a
+my_color15	= #bfbfbf
+
+[bar/dp4]
+monitor = ${env:MONITOR:DP-4}
+bottom = false
+width = 100%
+height = 3%
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = true
+
+
+background = ${colors.my_background}
+foreground =  ${colors.my_foreground}
+
+line-size = 2.5
+line-color = ${colors.my_color4}
+
+border-size = 0
+border-color = ${colors.my_color2}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = hack:pixelsize=20;2
+
+modules-left = i3 xwindow
+modules-center = date
+modules-right = player_previous player_playpause player_next player_title
+
+tray-position = right
+tray-padding = 9
+tray-offset-y = 0%
+tray-offset-x = 0%
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.my_background}
+
+wm-restack = i3
+
+;override-redirect = true
+
+[bar/dp0]
+monitor = ${env:MONITOR:DP-0}
+bottom = false
+width = 100%
+height = 3%
+offset-x = 0
+offset-y = 0
+radius = 0.0
+fixed-center = true
+
+
+background = ${colors.my_background}
+foreground =  ${colors.my_foreground}
+
+line-size = 2.5
+line-color = ${colors.my_color4}
+
+border-size = 0
+border-color = ${colors.my_color2}
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = hack:pixelsize=20;2
+
+modules-left = i3 xwindow
+modules-center = date
+modules-right = player_previous player_playpause player_next player_title
+
+
+tray-position = right
+tray-padding = 9
+tray-offset-y = 0%
+tray-offset-x = 0%
+tray-maxsize = 18
+tray-detached = false
+tray-background = ${colors.my_background}
+
+wm-restack = i3
+
+;override-redirect = true
+
+[module/i3]
+type = internal/i3
+
+label-unfocused-background = ${colors.my_background}
+label-unfocused-foreground = ${colors.my_foreground}
+
+label-mode = %mode%
+label-mode-padding = 7
+label-mode-background = ${colors.my_color4}
+
+label-focused = %index%
+label-focused-foreground = ${colors.my_foreground}
+label-focused-background = ${colors.my_background}
+label-focused-underline = ${colors.my_color4}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-underline = ${colors.my_foreground}
+label-visible-padding = 3
+
+label-urgent = %index%
+label-urgent-foreground = ${colors.my_foreground}
+label-urgent-background = ${colors.my_background}
+label-urgent-underline = ${colors.my_color8}
+label-urgent-padding = 2
+
+[module/date]
+type = internal/date
+interval = 5
+
+date =
+date-alt = "%d/%m/%Y"
+
+time = "%a %b %d, %H:%M "
+
+time-alt = %H:%M
+
+format-prefix-foreground = ${colors.my_foreground}
+;format-underline = ${colors.my_color5}
+format-underline =
+
+
+label = %date% %time%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:45:...%
+label-padding = 10
+label-foreground = ${colors.my_foreground}
+
+[module/player_previous]
+type = custom/text
+interval = 1
+content = <<
+content-padding = 1
+click-left = playerctl previous
+
+;[module/player_stop]
+;type = custom/text
+;interval = 1
+;content = O
+;content-padding = 1
+;click-left = playerctl stop
+
+[module/player_playpause]
+type = custom/script
+interval = 1
+label = %output%
+label-padding = 1
+exec = ~/.config/polybar/audio-playpause.sh
+click-left = playerctl play-pause
+
+[module/player_next]
+type = custom/text
+interval = 1
+content = >>
+click-left = playerctl next
+
+[module/player_title]
+type = custom/script
+interval = 1
+label = "%{F#1a8a74}▐%{F-} %output:0:60:...%"
+label-padding = 2
+exec = ~/.config/polybar/audio-title.sh
+scroll-up = playerctl previous
+scroll-down = playerctl next
