@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -198,7 +198,7 @@ exec xrandr --dpi 250
 exec "setxkbmap -layout de"
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/leaves_green_plant_blur_120282_3840x2160.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/leaves.jpg
 
 # Volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase
@@ -208,14 +208,18 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 # file manager
 bindsym $mod+e exec --no-startup-id nemo
 
-# chromium
-bindsym $mod+i exec --no-startup-id chromium
+# Firefox
+bindsym $mod+i exec --no-startup-id firefox
 
 # Spotify
 bindsym $mod+o exec --no-startup-id spotify
 
 # Layout manager
-bindsym $mod+l exec --no-startup-id .config/i3/layout.sh
+# bindsym $mod+l exec --no-startup-id .config/i3/layout.sh
 
 # Compositor
 exec_always --no-startup-id compton -b --config .config/compton/compton.conf
+
+# Lock screen
+exec --no-startup-id xautolock -time 10 -locker 'i3lock -i ~/Pictures/space.png -t'
+bindsym $mod+l exec --no-startup-id i3lock -i ~/Pictures/space.png -t
