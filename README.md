@@ -2,6 +2,7 @@
 * WM: i3-gaps
 * DM: lxdm (since sddm is buggy as hell)
 * Bar: polybar
+* Terminal: konsole
 * Compositor: compton
 * D-Menu: rofi
 * I run arch btw...
@@ -16,4 +17,3 @@ I try to only push config lines that are setup-independent. You have to tweak st
 
 ## I3
 The config assumes that you have two files in your `~/Pictures` directory, namely `space.png` and `leaves.png`, which are used for the lockscreen and wallpaper respectively. You are, of course, free to change that.
-
