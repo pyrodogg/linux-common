@@ -169,9 +169,9 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # scrot
-bindsym --release Shift+Print exec scrot
+bindsym --release Shift+Print exec scrot -e 'mv $f ~/Pictures/Screenshots'
 # scrot - select window or rectangle
-bindsym --release Print exec scrot -s
+bindsym --release Print exec scrot -s -e 'mv $f ~/Pictures/Screenshots'
 
 #--[ GAPS and BORDERS ]--#
 
@@ -198,12 +198,15 @@ exec xrandr --dpi 250
 exec "setxkbmap -layout de"
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/leaves.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/leaves.png
 
 # Volume control
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% #increase
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% #decrease
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% #increase
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2% #decrease
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle #mute
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # file manager
 bindsym $mod+e exec --no-startup-id nemo

@@ -50,14 +50,14 @@ border-color = ${colors.my_color2}
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 0
-module-margin-right = 0
+module-margin-left = 1
+module-margin-right = 1
 
 font-0 = hack:pixelsize=20;2
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = player_previous player_playpause player_next player_title
+modules-right = pulseaudio player_previous player_playpause player_next player_title
 
 tray-position = right
 tray-padding = 9
@@ -94,15 +94,14 @@ border-color = ${colors.my_color2}
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 0
-module-margin-right = 0
+module-margin-left = 1
+module-margin-right = 1
 
 font-0 = hack:pixelsize=20;2
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = player_previous player_playpause player_next player_title
-
+modules-right = pulseaudio player_previous player_playpause player_next player_title
 
 tray-position = right
 tray-padding = 9
@@ -123,13 +122,13 @@ label-unfocused-background = ${colors.my_background}
 label-unfocused-foreground = ${colors.my_foreground}
 
 label-mode = %mode%
-label-mode-padding = 7
+label-mode-padding = 5
 label-mode-background = ${colors.my_color4}
 
 label-focused = %index%
 label-focused-foreground = ${colors.my_foreground}
 label-focused-background = ${colors.my_background}
-label-focused-underline = ${colors.my_color4}
+label-focused-underline = #a1b497 
 label-focused-padding = 2
 
 label-unfocused = %index%
@@ -137,7 +136,7 @@ label-unfocused-padding = 2
 
 label-visible = %index%
 label-visible-underline = ${colors.my_foreground}
-label-visible-padding = 3
+label-visible-padding = 4
 
 label-urgent = %index%
 label-urgent-foreground = ${colors.my_foreground}
@@ -212,8 +211,37 @@ click-left = playerctl next
 [module/player_title]
 type = custom/script
 interval = 1
-label = "%{F#1a8a74}▐%{F-} %output:0:60:...%"
+label = "%{F#2b2b2bF-} %output:0:60:...%"
 label-padding = 2
 exec = ~/.config/polybar/audio-title.sh
 scroll-up = playerctl previous
 scroll-down = playerctl next
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <label-volume>
+label-volume = VOL %percentage%%
+label-volume-foreground = ${colors.my_foreground}
+
+label-muted = 🔇 muted
+label-muted-foreground = #66
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.my_foreground}
+
+
