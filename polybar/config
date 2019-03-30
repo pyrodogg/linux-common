@@ -8,8 +8,8 @@
 
 [colors]
 ;My colors are set from .Xresources to match everything else
-my_background 	= #405540
-my_foreground 	= #bfbfbf
+my_background 	= #B13C45 
+my_foreground 	= #ffffff
 my_color0	= #0f1619
 my_color1	= #393843
 my_color2	= #75404b

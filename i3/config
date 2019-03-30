@@ -89,7 +89,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -136,7 +136,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Wanna exit out of here?' -B 'Yes' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -183,10 +183,10 @@ new_window none
 for_window [class="^.*"] border pixel 1
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #91b587 #91b587 #16272e #16272e   #91b587
-client.focused_inactive #406b40 #406b40 #16272e #484e50   #406b40
-client.unfocused        #406b40 #406b40 #16272e #16272e   #406b40
-client.urgent           #b65a22 #900000 #16272e #ffffff   #900000
+client.focused          #fff7b9 #fff7b9 #16272e #fff7b9   #fff7b9
+client.focused_inactive #fff7b9 #fff7b9 #16272e #fff7b9   #fff7b9
+client.unfocused        #282c34 #282c34 #16272e #282c34   #282c34
+client.urgent           #ed254e #ed254e #16272e #ed254e   #ed254e
 client.placeholder      #000000 #0c0c0c #16272e #000000   #0c0c0c
 
 client.background       #ffffff
@@ -198,7 +198,7 @@ exec xrandr --dpi 250
 exec "setxkbmap -layout de"
 
 # Wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/leaves.png
+exec --no-startup-id feh --bg-fill ~/Pictures/planet.png
 
 # Volume control
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2% #increase
@@ -210,6 +210,9 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # file manager
 bindsym $mod+e exec --no-startup-id nemo
+
+# atom
+bindsym $mod+a exec --no-startup-id atom
 
 # Firefox
 bindsym $mod+i exec --no-startup-id firefox
